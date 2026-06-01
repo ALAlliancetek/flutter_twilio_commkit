@@ -1,3 +1,9 @@
+## 0.1.1
+
+### Fixes
+* Fixed missing trailing commas in `video_event.dart` and `method_channel_twilio_commkit.dart`.
+* Added `.pubignore` to exclude generated `.dart_tool/` and `pubspec.lock` from published package.
+
 ## 0.1.0
 
 ### Voice

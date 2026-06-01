@@ -1,3 +1,12 @@
+## 0.1.1
+
+### Fixes
+* Fixed missing trailing commas in `video_event.dart` and `method_channel_twilio_commkit.dart` (static analysis).
+* Applied `const` constructors in example `main.dart` for better performance.
+* Sorted `dev_dependencies` alphabetically in `example/pubspec.yaml`.
+* Added `.pubignore` to exclude `.dart_tool/` and `pubspec.lock` from published artifacts.
+* Removed tracked build artifacts (`.dart_tool/`, `pubspec.lock`) from version control.
+
 ## 0.1.0
 
 ### Voice

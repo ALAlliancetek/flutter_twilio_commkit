@@ -2,7 +2,7 @@ name: flutter_twilio_commkit_android
 description: >-
   Android implementation of flutter_twilio_commkit using the official Twilio
   Video and Voice Android SDKs (Kotlin + Coroutines).
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/ALAlliancetek/flutter_twilio_commkit
 homepage: https://github.com/ALAlliancetek/flutter_twilio_commkit
 issue_tracker: https://github.com/ALAlliancetek/flutter_twilio_commkit/issues
@@ -20,7 +20,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_twilio_commkit_platform_interface: ^0.1.0
+  flutter_twilio_commkit_platform_interface: ^0.1.1
 
 flutter:
   plugin:

@@ -1,3 +1,9 @@
+## 0.1.1
+
+### Fixes
+* Added `.pubignore` to exclude generated `.dart_tool/` and `pubspec.lock` from published package.
+* Bumped `flutter_twilio_commkit_platform_interface` constraint to `^0.1.1`.
+
 ## 0.1.0
 
 ### Voice

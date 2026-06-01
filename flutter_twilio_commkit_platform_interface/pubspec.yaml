@@ -2,7 +2,7 @@ name: flutter_twilio_commkit_platform_interface
 description: >-
   Platform interface for flutter_twilio_commkit. Defines the abstract contract
   implemented by the Android and iOS platform packages.
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/ALAlliancetek/flutter_twilio_commkit
 homepage: https://github.com/ALAlliancetek/flutter_twilio_commkit
 issue_tracker: https://github.com/ALAlliancetek/flutter_twilio_commkit/issues
