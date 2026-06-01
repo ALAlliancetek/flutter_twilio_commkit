@@ -25,6 +25,12 @@ while read LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
   if [ "$LOCAL_SHA" = "0000000000000000000000000000000000000000" ]; then
     continue  # Skip deleted branches
   fi
+  # Skip tag pushes — tags point to already-reviewed commits;
+  # scanning full history from a new tag generates false positives
+  # from historical content (e.g. IDE state files).
+  if echo "$REMOTE_REF" | grep -q "^refs/tags/"; then
+    continue
+  fi
   # Get range of commits being pushed
   if [ "$REMOTE_SHA" = "0000000000000000000000000000000000000000" ]; then
     RANGE="$LOCAL_SHA"
