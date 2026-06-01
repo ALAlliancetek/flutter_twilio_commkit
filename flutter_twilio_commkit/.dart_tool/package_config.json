@@ -141,19 +141,19 @@
     },
     {
       "name": "flutter_twilio_commkit_android",
-      "rootUri": "../../flutter_twilio_commkit_android",
+      "rootUri": "file:///C:/Users/Abhishek/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_twilio_commkit_android-0.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "flutter_twilio_commkit_ios",
-      "rootUri": "../../flutter_twilio_commkit_ios",
+      "rootUri": "file:///C:/Users/Abhishek/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_twilio_commkit_ios-0.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "flutter_twilio_commkit_platform_interface",
-      "rootUri": "../../flutter_twilio_commkit_platform_interface",
+      "rootUri": "file:///C:/Users/Abhishek/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_twilio_commkit_platform_interface-0.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },

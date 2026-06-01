@@ -182,23 +182,26 @@ packages:
   flutter_twilio_commkit_android:
     dependency: "direct main"
     description:
-      path: "../flutter_twilio_commkit_android"
-      relative: true
-    source: path
+      name: flutter_twilio_commkit_android
+      sha256: "73abde387cb40f5ec562520fd1c19a2aa8d607d8366818b6b7a60a6977002664"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.0"
   flutter_twilio_commkit_ios:
     dependency: "direct main"
     description:
-      path: "../flutter_twilio_commkit_ios"
-      relative: true
-    source: path
+      name: flutter_twilio_commkit_ios
+      sha256: f2a5449c0dba4c16a013bf960b5d95cce13223215f516d39e45f52327c93530d
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.0"
   flutter_twilio_commkit_platform_interface:
     dependency: "direct main"
     description:
-      path: "../flutter_twilio_commkit_platform_interface"
-      relative: true
-    source: path
+      name: flutter_twilio_commkit_platform_interface
+      sha256: "9f7af180b84f3a3ab3b9d22c7980d1a9c5427f4680c34484693c42eebb7d0eb1"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.0"
   flutter_web_plugins:
     dependency: transitive
