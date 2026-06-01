@@ -20,8 +20,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_twilio_commkit_platform_interface:
-    path: ../flutter_twilio_commkit_platform_interface
+  flutter_twilio_commkit_platform_interface: ^0.1.0
 
 flutter:
   plugin:

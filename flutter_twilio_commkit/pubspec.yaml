@@ -27,12 +27,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.5.1
-  flutter_twilio_commkit_platform_interface:
-    path: ../flutter_twilio_commkit_platform_interface
-  flutter_twilio_commkit_android:
-    path: ../flutter_twilio_commkit_android
-  flutter_twilio_commkit_ios:
-    path: ../flutter_twilio_commkit_ios
+  flutter_twilio_commkit_platform_interface: ^0.1.0
+  flutter_twilio_commkit_android: ^0.1.0
+  flutter_twilio_commkit_ios: ^0.1.0
   audioplayers: ^6.7.0
 
 dev_dependencies:
