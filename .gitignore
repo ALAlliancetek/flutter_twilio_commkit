@@ -1,0 +1,62 @@
+# ── Twilio credentials (NEVER commit real keys) ───────────────────────────────
+# Real config files are ignored — only the .example templates are committed.
+example/*/lib/config/twilio_app_config.dart
+
+# Firebase config files (contain project identifiers)
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase_options.dart
+
+# Token server environment (contains Twilio API secrets)
+docs/token_server/.env
+docs/token_server/.env.local
+
+# ── Flutter / Dart ────────────────────────────────────────────────────────────
+**/doc/api/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/build/
+**/coverage/
+
+# ── Android ───────────────────────────────────────────────────────────────────
+**/android/local.properties
+**/android/.gradle/
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/*.class
+**/*.log
+**/*.pyc
+**/*.swp
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+
+# ── iOS ───────────────────────────────────────────────────────────────────────
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/.last_build_id
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+**/macos/Pods/
+**/macos/.symlinks/
+
+# ── IntelliJ / Android Studio ────────────────────────────────────────────────
+**/.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+# .vscode/ is intentionally NOT ignored — launch configs are useful to share
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Pub publish lock ──────────────────────────────────────────────────────────
+**/pubspec.lock
+

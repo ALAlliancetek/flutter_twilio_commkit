@@ -43,3 +43,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# ── Twilio credentials ────────────────────────────────────────────────────────
+# The real config file with your credentials must NEVER be committed.
+# Copy twilio_app_config.dart.example -> twilio_app_config.dart and fill in values.
+lib/config/twilio_app_config.dart
+
+# Firebase config (contains project identifiers)
+google-services.json
+GoogleService-Info.plist
+lib/firebase_options.dart
+

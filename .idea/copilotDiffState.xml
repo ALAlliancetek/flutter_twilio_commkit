@@ -3,6 +3,15 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
+        <entry key="/.gitignore (snapshot).gitignore">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="/.gitignore (snapshot).gitignore" />
+              <option name="originalContent" value="# Miscellaneous&#10;*.class&#10;*.log&#10;*.pyc&#10;*.swp&#10;.DS_Store&#10;.atom/&#10;.build/&#10;.buildlog/&#10;.history&#10;.svn/&#10;.swiftpm/&#10;migrate_working_dir/&#10;&#10;# IntelliJ related&#10;*.iml&#10;*.ipr&#10;*.iws&#10;.idea/&#10;&#10;# The .vscode folder contains launch configuration and tasks you configure in&#10;# VS Code which you may wish to be included in version control, so this line&#10;# is commented out by default.&#10;#.vscode/&#10;&#10;# Flutter/Dart/Pub related&#10;**/doc/api/&#10;**/ios/Flutter/.last_build_id&#10;.dart_tool/&#10;.flutter-plugins-dependencies&#10;.pub-cache/&#10;.pub/&#10;/build/&#10;/coverage/&#10;&#10;# Symbolication related&#10;app.*.symbols&#10;&#10;# Obfuscation related&#10;app.*.map.json&#10;&#10;# Android Studio will place build artifacts here&#10;/android/app/debug&#10;/android/app/profile&#10;/android/app/release&#10;" />
+              <option name="updatedContent" value="# Miscellaneous&#13;&#10;*.class&#13;&#10;*.log&#13;&#10;*.pyc&#13;&#10;*.swp&#13;&#10;.DS_Store&#13;&#10;.atom/&#13;&#10;.build/&#13;&#10;.buildlog/&#13;&#10;.history&#13;&#10;.svn/&#13;&#10;.swiftpm/&#13;&#10;migrate_working_dir/&#13;&#10;&#13;&#10;# IntelliJ related&#13;&#10;*.iml&#13;&#10;*.ipr&#13;&#10;*.iws&#13;&#10;.idea/&#13;&#10;&#13;&#10;# The .vscode folder contains launch configuration and tasks you configure in&#13;&#10;# VS Code which you may wish to be included in version control, so this line&#13;&#10;# is commented out by default.&#13;&#10;#.vscode/&#13;&#10;&#13;&#10;# Flutter/Dart/Pub related&#13;&#10;**/doc/api/&#13;&#10;**/ios/Flutter/.last_build_id&#13;&#10;.dart_tool/&#13;&#10;.flutter-plugins-dependencies&#13;&#10;.pub-cache/&#13;&#10;.pub/&#13;&#10;/build/&#13;&#10;/coverage/&#13;&#10;&#13;&#10;# Symbolication related&#13;&#10;app.*.symbols&#13;&#10;&#13;&#10;# Obfuscation related&#13;&#10;app.*.map.json&#13;&#10;&#13;&#10;# Android Studio will place build artifacts here&#13;&#10;/android/app/debug&#13;&#10;/android/app/profile&#13;&#10;/android/app/release&#13;&#10;&#13;&#10;# ── Twilio credentials ────────────────────────────────────────────────────────&#13;&#10;# The real config file with your credentials must NEVER be committed.&#13;&#10;# Copy twilio_app_config.dart.example -&gt; twilio_app_config.dart and fill in values.&#13;&#10;lib/config/twilio_app_config.dart&#13;&#10;&#13;&#10;# Firebase config (contains project identifiers)&#13;&#10;google-services.json&#13;&#10;GoogleService-Info.plist&#13;&#10;lib/firebase_options.dart&#13;&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="/FlutterTwilioCommKitAndroidPlugin (snapshot).kt">
           <value>
             <PendingDiffInfo>
