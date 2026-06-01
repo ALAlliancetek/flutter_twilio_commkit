@@ -2,7 +2,7 @@ name: flutter_twilio_commkit
 description: >-
   Flutter SDK for Twilio Voice & Video. Native Android/iOS integration with
   built-in UI, CallKit, FCM/PushKit push, DTMF dialpad, and headless mode.
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/ALAlliancetek/flutter_twilio_commkit
 homepage: https://github.com/ALAlliancetek/flutter_twilio_commkit
 issue_tracker: https://github.com/ALAlliancetek/flutter_twilio_commkit/issues

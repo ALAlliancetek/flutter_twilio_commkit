@@ -1,3 +1,9 @@
+## 0.1.2
+
+### Fixes
+* Include `example/` in the published package so pub.dev awards the "Package has an example" score point.
+  The example was previously excluded by `.pubignore` — that exclusion has been removed.
+
 ## 0.1.1
 
 ### Fixes

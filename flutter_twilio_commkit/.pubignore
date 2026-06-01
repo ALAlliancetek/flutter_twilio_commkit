@@ -4,8 +4,8 @@
 .dart_tool/
 pubspec.lock
 
-# Example apps (too large)
-example/
+# NOTE: example/ is intentionally NOT excluded — pub.dev needs it
+# to award the "Package has an example" score point.
 
 # CI / editor config
 .github/
