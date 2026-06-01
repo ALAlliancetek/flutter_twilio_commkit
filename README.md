@@ -138,7 +138,7 @@ TwilioThemeData.videoOcean()   // Ocean blue, cyan accents
 - [API Reference](docs/api_reference.md)
 - [Customization Guide](docs/customization.md)
 - [Installation Guide](docs/installation.md)
-- [Token Server](docs/token_server/README.md) — ready-made Node.js backend
+- [Token Server](https://github.com/ALAlliancetek/Twilio-Token/README.md) — ready-made Node.js backend
 
 ---
 
