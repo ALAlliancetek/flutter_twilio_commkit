@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 /// Style for a single call action button (accept, reject, end, mute, speaker...).
 @immutable
 class TwilioCallButtonStyle {
@@ -183,10 +183,10 @@ class TwilioThemeData {
         networkQualityPoorColor: Color(0xFFF44336),
         videoBackgroundColor: Color(0xFF222222),
       );
-  factory TwilioThemeData.videoCinema() => TwilioThemeData(
+  factory TwilioThemeData.videoCinema() => const TwilioThemeData(
         backgroundColor: Colors.black,
         videoBackgroundColor: Colors.black,
-        controlBarColor: const Color(0xFF111111),
+        controlBarColor: Color(0xFF111111),
         controlIconColor: Colors.white,
         controlIconActiveColor: Colors.orangeAccent,
         participantNameColor: Colors.white,
@@ -199,18 +199,18 @@ class TwilioThemeData {
         roomBadgeColor: Colors.black54,
         controlBarBorderRadius: 0,
         participantTileRadius: 0,
-        tileSeparatorColor: const Color(0xFF222222),
-        endCallButtonStyle: const TwilioCallButtonStyle(
+        tileSeparatorColor: Color(0xFF222222),
+        endCallButtonStyle: TwilioCallButtonStyle(
           backgroundColor: Colors.redAccent,
           iconColor: Colors.white,
           size: 68,
           iconSize: 30,
         ),
-        muteButtonStyle: const TwilioCallButtonStyle(
+        muteButtonStyle: TwilioCallButtonStyle(
           backgroundColor: Color(0xFF222222),
           iconColor: Colors.white,
         ),
-        videoButtonStyle: const TwilioCallButtonStyle(
+        videoButtonStyle: TwilioCallButtonStyle(
           backgroundColor: Color(0xFF222222),
           iconColor: Colors.white,
         ),
@@ -225,7 +225,6 @@ class TwilioThemeData {
         networkQualityGoodColor: const Color(0xFF69F0AE),
         networkQualityPoorColor: const Color(0xFFFF5252),
         dominantSpeakerBorderColor: Colors.purpleAccent,
-        dominantSpeakerBorderWidth: 2.5,
         pipBorderColor: Colors.purple.withValues(alpha: 0.5),
         pipBorderRadius: 16,
         participantTileRadius: 16,
@@ -257,23 +256,21 @@ class TwilioThemeData {
           iconColor: Colors.white70,
         ),
       );
-  factory TwilioThemeData.videoOcean() => TwilioThemeData(
-        backgroundColor: const Color(0xFF003049),
-        videoBackgroundColor: const Color(0xFF001E33),
-        controlBarColor: const Color(0xFF003049),
+  factory TwilioThemeData.videoOcean() => const TwilioThemeData(
+        backgroundColor: Color(0xFF003049),
+        videoBackgroundColor: Color(0xFF001E33),
+        controlBarColor: Color(0xFF003049),
         controlIconColor: Colors.white,
-        controlIconActiveColor: const Color(0xFF00B4D8),
+        controlIconActiveColor: Color(0xFF00B4D8),
         participantNameColor: Colors.white,
-        networkQualityGoodColor: const Color(0xFF80FFDB),
-        networkQualityPoorColor: const Color(0xFFEF233C),
-        dominantSpeakerBorderColor: const Color(0xFF00B4D8),
-        pipBorderColor: const Color(0xFF00B4D8),
-        pipBorderRadius: 12,
-        participantTileRadius: 12,
-        roomBadgeColor: const Color(0xFF003049),
+        networkQualityGoodColor: Color(0xFF80FFDB),
+        networkQualityPoorColor: Color(0xFFEF233C),
+        dominantSpeakerBorderColor: Color(0xFF00B4D8),
+        pipBorderColor: Color(0xFF00B4D8),
+        roomBadgeColor: Color(0xFF003049),
         controlBarBorderRadius: 20,
-        tileSeparatorColor: const Color(0xFF001E33),
-        endCallButtonStyle: const TwilioCallButtonStyle(
+        tileSeparatorColor: Color(0xFF001E33),
+        endCallButtonStyle: TwilioCallButtonStyle(
           backgroundColor: Color(0xFFEF233C),
           iconColor: Colors.white,
           size: 68,

@@ -81,7 +81,7 @@ class TwilioParticipantTile extends StatelessWidget {
                           TextStyle(
                               color: theme.participantNameColor,
                               fontSize: 12,
-                              fontWeight: FontWeight.w500),
+                              fontWeight: FontWeight.w500,),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

@@ -83,17 +83,14 @@ class _TwilioIncomingCallScreenState extends State<TwilioIncomingCallScreen>
       // ring/notification stream (audible even when the earpiece is active).
       await _player.setAudioContext(
         AudioContext(
-          android: AudioContextAndroid(
+          android: const AudioContextAndroid(
             audioFocus: AndroidAudioFocus.gainTransient,
             usageType: AndroidUsageType.notification,
             contentType: AndroidContentType.sonification,
             audioMode: AndroidAudioMode.ringtone,
-            isSpeakerphoneOn: false,
-            stayAwake: false,
           ),
           iOS: AudioContextIOS(
-            category: AVAudioSessionCategory.playback,
-            options: {
+            options: const {
               AVAudioSessionOptions.mixWithOthers,
             },
           ),
@@ -198,7 +195,7 @@ class _TwilioIncomingCallScreenState extends State<TwilioIncomingCallScreen>
                 // ── Accept / Reject buttons ───────────────────────────────
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 48, vertical: 12),
+                      horizontal: 48, vertical: 12,),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

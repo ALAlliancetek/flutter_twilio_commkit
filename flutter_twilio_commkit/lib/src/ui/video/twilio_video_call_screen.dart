@@ -55,7 +55,7 @@ class TwilioVideoCallScreen extends ConsumerStatefulWidget {
   final void Function(String? reason)? onRoomDisconnected;
 
   /// Override the default controls bar. Receives current mute/video state.
-  final Widget Function(BuildContext context, _VideoCallState state)?
+  final Widget Function(BuildContext context, TwilioVideoCallState state)?
       controlsBuilder;
 
   /// Override individual participant tiles.
@@ -75,8 +75,8 @@ class TwilioVideoCallScreen extends ConsumerStatefulWidget {
       _TwilioVideoCallScreenState();
 }
 
-class _VideoCallState {
-  const _VideoCallState({
+class TwilioVideoCallState {
+  const TwilioVideoCallState({
     this.isAudioMuted = false,
     this.isVideoMuted = false,
     this.participants = const [],
@@ -201,7 +201,7 @@ class _TwilioVideoCallScreenState
               final cap = TwilioVideo.instance.maxParticipants;
               if (cap != null && _participants.length + 1 >= cap) {
                 TwilioLogger.warning(
-                    'Participant ${participant.identity} joined but cap $cap reached — hidden from grid');
+                    'Participant ${participant.identity} joined but cap $cap reached — hidden from grid',);
                 return;
               }
               _participants.add(participant);
@@ -228,7 +228,7 @@ class _TwilioVideoCallScreenState
             final idx = _participants.indexWhere((p) => p.sid == participantSid);
             if (idx != -1) {
               _participants[idx] = _participants[idx].copyWith(
-                  isAudioEnabled: isAudioEnabled);
+                  isAudioEnabled: isAudioEnabled,);
             }
           });
         case ParticipantVideoChangedRoomEvent(
@@ -239,14 +239,14 @@ class _TwilioVideoCallScreenState
             final idx = _participants.indexWhere((p) => p.sid == participantSid);
             if (idx != -1) {
               _participants[idx] = _participants[idx].copyWith(
-                  isVideoEnabled: isVideoEnabled);
+                  isVideoEnabled: isVideoEnabled,);
             }
           });
         case DominantSpeakerChangedRoomEvent(:final participantSid):
           setState(() {
             for (var i = 0; i < _participants.length; i++) {
               _participants[i] = _participants[i].copyWith(
-                  isDominantSpeaker: _participants[i].sid == participantSid);
+                  isDominantSpeaker: _participants[i].sid == participantSid,);
             }
           });
         case RoomConnectedRoomEvent():
@@ -276,7 +276,7 @@ class _TwilioVideoCallScreenState
       if (mounted) {
         setState(() => _isConnecting = false);
         widget.onRoomConnected?.call();
-        _refreshParticipants();
+        unawaited(_refreshParticipants());
       }
     } on TwilioCallException catch (e) {
       if (mounted) {
@@ -293,7 +293,7 @@ class _TwilioVideoCallScreenState
           _connectError = e
               .toString()
               .replaceAll(
-                  'TwilioCallException(code: null, message: ', '')
+                  'TwilioCallException(code: null, message: ', '',)
               .replaceAll(RegExp(r'\)$'), '');
         });
       }
@@ -340,7 +340,7 @@ class _TwilioVideoCallScreenState
     final aloneInRoom = _participants.isEmpty;
     final showControls = aloneInRoom || _controlsVisible;
 
-    final state = _VideoCallState(
+    final state = TwilioVideoCallState(
       isAudioMuted: _isAudioMuted,
       isVideoMuted: _isVideoMuted,
       participants: _participants,
@@ -489,7 +489,7 @@ class _TwilioVideoCallScreenState
             color: Colors.black.withValues(alpha: 0.55),
             borderRadius: BorderRadius.circular(26),
             border: Border.all(
-                color: Colors.white.withValues(alpha: 0.14), width: 1),
+                color: Colors.white.withValues(alpha: 0.14),),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -500,7 +500,7 @@ class _TwilioVideoCallScreenState
                 builder: (_, v, child) =>
                     Transform.scale(scale: v, child: child),
                 child: const Icon(Icons.people_outline,
-                    color: Colors.white70, size: 18),
+                    color: Colors.white70, size: 18,),
               ),
               const SizedBox(width: 8),
               const Text(
@@ -538,7 +538,7 @@ class _TwilioVideoCallScreenState
           color: Colors.black.withValues(alpha: 0.55),
           borderRadius: BorderRadius.circular(26),
           border: Border.all(
-              color: Colors.white.withValues(alpha: 0.14), width: 1),
+              color: Colors.white.withValues(alpha: 0.14),),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -561,7 +561,7 @@ class _TwilioVideoCallScreenState
                           shape: BoxShape.circle,
                           color: _avatarColor(i),
                           border: Border.all(
-                              color: Colors.black, width: 1.5),
+                              width: 1.5,),
                         ),
                         alignment: Alignment.center,
                         child: Text(
@@ -615,7 +615,7 @@ class _TwilioVideoCallScreenState
             if (hasDominant) ...[
               const SizedBox(width: 6),
               const Icon(Icons.volume_up_rounded,
-                  color: Colors.greenAccent, size: 14),
+                  color: Colors.greenAccent, size: 14,),
             ],
           ],
         ),
@@ -645,9 +645,8 @@ class _TwilioVideoCallScreenState
 
     return Padding(
       padding: EdgeInsets.only(
-          top: topPad + 4, left: 8, right: 8, bottom: 8),
+          top: topPad + 4, left: 8, right: 8, bottom: 8,),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // ── Back / hang-up shortcut ──────────────────────────────────
           Material(
@@ -662,7 +661,7 @@ class _TwilioVideoCallScreenState
                   color: Colors.black.withValues(alpha: 0.35),
                 ),
                 child: const Icon(Icons.arrow_back_ios_new,
-                    color: Colors.white, size: 18),
+                    color: Colors.white, size: 18,),
               ),
             ),
           ),
@@ -724,7 +723,6 @@ class _TwilioVideoCallScreenState
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                   color: Colors.white.withValues(alpha: 0.15),
-                  width: 1,
                 ),
               ),
               child: Row(
@@ -747,7 +745,7 @@ class _TwilioVideoCallScreenState
                   if (hasOthers) ...[
                     const SizedBox(width: 3),
                     Icon(Icons.chevron_right,
-                        color: Colors.white.withValues(alpha: 0.6), size: 14),
+                        color: Colors.white.withValues(alpha: 0.6), size: 14,),
                   ],
                 ],
               ),
@@ -794,10 +792,10 @@ class _TwilioVideoCallScreenState
       fit: StackFit.expand,
       children: [
         // ── Background colour (visible before camera is ready) ──────────
-        ColoredBox(color: const Color(0xFF0D0D0D)),
+        const ColoredBox(color: Color(0xFF0D0D0D)),
 
         // ── Local camera preview ─────────────────────────────────────────
-        TwilioVideoPreview(fit: BoxFit.cover),
+        const TwilioVideoPreview(),
 
         // ── Camera-off avatar overlay ────────────────────────────────────
         if (_isVideoMuted)
@@ -811,7 +809,7 @@ class _TwilioVideoCallScreenState
                 child: Icon(theme.avatarIcon,
                     size: 52,
                     color:
-                        theme.avatarIconColor ?? theme.controlIconColor),
+                        theme.avatarIconColor ?? theme.controlIconColor,),
               ),
             ),
           ),
@@ -829,10 +827,10 @@ class _TwilioVideoCallScreenState
                 color: Colors.black.withValues(alpha: 0.40),
                 shape: BoxShape.circle,
                 border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.08), width: 1),
+                    color: Colors.white.withValues(alpha: 0.08),),
               ),
               child: Icon(Icons.people_outline,
-                  color: Colors.white.withValues(alpha: 0.70), size: 48),
+                  color: Colors.white.withValues(alpha: 0.70), size: 48,),
             ),
           ),
         ),
@@ -844,9 +842,9 @@ class _TwilioVideoCallScreenState
             bottom: bp + 6,
             left: 16,
             child: _SelfLabel(
-                isMuted: _isAudioMuted, isVideoMuted: _isVideoMuted),
+                isMuted: _isAudioMuted, isVideoMuted: _isVideoMuted,),
           );
-        }),
+        },),
       ],
     );
   }
@@ -856,7 +854,6 @@ class _TwilioVideoCallScreenState
     final custom = widget.participantBuilder?.call(context, _participants[0]);
     if (custom != null) return custom;
     return ClipRRect(
-      borderRadius: BorderRadius.zero,
       child: TwilioParticipantTile(
         participant: _participants[0],
         showNameBadge: false, // name shown in bottom strip instead
@@ -870,7 +867,7 @@ class _TwilioVideoCallScreenState
       children: [
         Expanded(child: _buildTile(_participants[0], theme, radius: 0)),
         SizedBox(height: 2,
-            child: ColoredBox(color: theme.effectiveTileSeparatorColor)),
+            child: ColoredBox(color: theme.effectiveTileSeparatorColor),),
         Expanded(child: _buildTile(_participants[1], theme, radius: 0)),
       ],
     );
@@ -885,17 +882,17 @@ class _TwilioVideoCallScreenState
           child: _buildTile(_participants[0], theme, radius: 0),
         ),
         SizedBox(height: 2,
-            child: ColoredBox(color: theme.effectiveTileSeparatorColor)),
+            child: ColoredBox(color: theme.effectiveTileSeparatorColor),),
         Expanded(
           flex: 2,
           child: Row(
             children: [
               Expanded(
-                  child: _buildTile(_participants[1], theme, radius: 0)),
+                  child: _buildTile(_participants[1], theme, radius: 0),),
               SizedBox(width: 2,
-                  child: ColoredBox(color: theme.effectiveTileSeparatorColor)),
+                  child: ColoredBox(color: theme.effectiveTileSeparatorColor),),
               Expanded(
-                  child: _buildTile(_participants[2], theme, radius: 0)),
+                  child: _buildTile(_participants[2], theme, radius: 0),),
             ],
           ),
         ),
@@ -920,11 +917,11 @@ class _TwilioVideoCallScreenState
               children: [
                 Expanded(
                     child: _buildTile(_participants[row * 2], theme,
-                        radius: 0)),
+                        radius: 0,),),
                 SizedBox(width: 2, child: ColoredBox(color: sep)),
                 Expanded(
                     child: _buildTile(_participants[row * 2 + 1], theme,
-                        radius: 0)),
+                        radius: 0,),),
               ],
             ),
           ),
@@ -941,7 +938,7 @@ class _TwilioVideoCallScreenState
 
   // Single participant tile
   Widget _buildTile(Participant p, TwilioThemeData theme,
-      {double radius = 12}) {
+      {double radius = 12,}) {
     final custom = widget.participantBuilder?.call(context, p);
     if (custom != null) return custom;
     return ClipRRect(
@@ -992,15 +989,15 @@ class _TwilioVideoCallScreenState
             fit: StackFit.expand,
             children: [
               // Camera feed
-              TwilioVideoPreview(fit: BoxFit.cover),
+              const TwilioVideoPreview(),
 
               // Camera-off overlay
               if (_isVideoMuted)
                 Container(
                   color: Colors.black87,
-                  child: Center(
+                  child: const Center(
                     child: Icon(Icons.videocam_off,
-                        color: Colors.white54, size: 24),
+                        color: Colors.white54, size: 24,),
                   ),
                 ),
 
@@ -1023,12 +1020,12 @@ class _TwilioVideoCallScreenState
                     children: [
                       if (_isAudioMuted)
                         const Icon(Icons.mic_off,
-                            color: Colors.redAccent, size: 11),
+                            color: Colors.redAccent, size: 11,),
                       if (_isAudioMuted) const SizedBox(width: 3),
-                      Expanded(
+                      const Expanded(
                         child: Text(
                           'You',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
@@ -1049,7 +1046,7 @@ class _TwilioVideoCallScreenState
                         BorderRadius.circular(theme.pipBorderRadius),
                     border: Border.all(
                         color: theme.effectivePipBorderColor,
-                        width: theme.pipBorderWidth),
+                        width: theme.pipBorderWidth,),
                   ),
                 ),
               ),
@@ -1182,7 +1179,7 @@ class _TwilioVideoCallScreenState
   }
 
   Future<void> _hangUp() async {
-    _doDisconnect();
+    unawaited(_doDisconnect());
     if (mounted) Navigator.of(context).pop();
   }
 }
@@ -1202,7 +1199,7 @@ class _SelfLabel extends StatelessWidget {
         color: Colors.black.withValues(alpha: 0.55),
         borderRadius: BorderRadius.circular(14),
         border:
-            Border.all(color: Colors.white.withValues(alpha: 0.12), width: 1),
+            Border.all(color: Colors.white.withValues(alpha: 0.12)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -1213,7 +1210,7 @@ class _SelfLabel extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
-                  fontWeight: FontWeight.w600)),
+                  fontWeight: FontWeight.w600,),),
           if (isMuted) ...[
             const SizedBox(width: 6),
             const Icon(Icons.mic_off, color: Colors.redAccent, size: 12),
@@ -1274,7 +1271,7 @@ class _ParticipantListSheet extends StatelessWidget {
                     Icon(Icons.people,
                         color: theme.participantNameColor
                             .withValues(alpha: 0.8),
-                        size: 20),
+                        size: 20,),
                     const SizedBox(width: 8),
                     Text(
                       'Participants',
@@ -1287,7 +1284,7 @@ class _ParticipantListSheet extends StatelessWidget {
                     const Spacer(),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 4),
+                          horizontal: 10, vertical: 4,),
                       decoration: BoxDecoration(
                         color: Colors.white12,
                         borderRadius: BorderRadius.circular(12),
@@ -1304,7 +1301,7 @@ class _ParticipantListSheet extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Divider(color: Colors.white12),
+                const Divider(color: Colors.white12),
               ],
             ),
           ),
@@ -1423,7 +1420,7 @@ class _ParticipantRow extends StatelessWidget {
                 if (isDominantSpeaker) ...[
                   const SizedBox(width: 6),
                   Icon(Icons.volume_up,
-                      color: theme.effectiveDominantSpeakerColor, size: 14),
+                      color: theme.effectiveDominantSpeakerColor, size: 14,),
                 ],
               ],
             ),
@@ -1461,12 +1458,12 @@ class _ParticipantRow extends StatelessWidget {
               // Mic
               if (!isAudioEnabled && !isLocal)
                 const Icon(Icons.mic_off,
-                    color: Colors.redAccent, size: 18),
+                    color: Colors.redAccent, size: 18,),
               // Camera
               if (!isVideoEnabled && !isLocal) ...[
                 const SizedBox(width: 4),
-                Icon(Icons.videocam_off,
-                    color: Colors.white38, size: 18),
+                const Icon(Icons.videocam_off,
+                    color: Colors.white38, size: 18,),
               ],
             ],
           ),

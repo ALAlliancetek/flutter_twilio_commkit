@@ -55,7 +55,6 @@ class TwilioCallControls extends StatelessWidget {
         borderRadius: BorderRadius.circular(theme.controlBarBorderRadius),
         border: Border.all(
           color: Colors.white.withValues(alpha: 0.08),
-          width: 1,
         ),
         boxShadow: [
           BoxShadow(
@@ -197,7 +196,7 @@ class _ControlButton extends StatelessWidget {
               border: style?.border ??
                   (isActive
                       ? Border.all(
-                          color: activeColor.withValues(alpha: 0.4), width: 1.5)
+                          color: activeColor.withValues(alpha: 0.4), width: 1.5,)
                       : null),
             ),
             child: Icon(icon, color: effectiveIconColor, size: iconSize),

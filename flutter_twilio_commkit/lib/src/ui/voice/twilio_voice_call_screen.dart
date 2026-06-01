@@ -302,7 +302,7 @@ class _TwilioVoiceCallScreenState extends State<TwilioVoiceCallScreen>
               // ── Controls: Mute | End | Speaker ─────────────────────────
               Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 32, vertical: 16),
+                    horizontal: 32, vertical: 16,),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -396,7 +396,7 @@ class _TwilioVoiceCallScreenState extends State<TwilioVoiceCallScreen>
                         icon: Icon(Icons.dialpad,
                             color: theme.participantNameColor
                                 .withValues(alpha: 0.55),
-                            size: 18),
+                            size: 18,),
                         label: Text(
                           'Keypad',
                           style: TextStyle(
@@ -555,10 +555,10 @@ class _DialpadSheetState extends State<_DialpadSheet> {
                         icon: Icon(Icons.backspace_outlined,
                             color: theme.participantNameColor
                                 .withValues(alpha: 0.5),
-                            size: 20),
+                            size: 20,),
                         onPressed: () => setState(() =>
                             _buffer =
-                                _buffer.substring(0, _buffer.length - 1)),
+                                _buffer.substring(0, _buffer.length - 1),),
                       ),
                     ),
                 ],
@@ -573,7 +573,7 @@ class _DialpadSheetState extends State<_DialpadSheet> {
                           label: key,
                           theme: theme,
                           onTap: () => _onKey(key),
-                        ))
+                        ),)
                     .toList(),
               ),
           ],

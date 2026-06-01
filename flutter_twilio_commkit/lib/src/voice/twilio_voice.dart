@@ -91,8 +91,8 @@ class TwilioVoice {
   }) async {
     final token = accessToken?.isNotEmpty == true ? accessToken! : _lastAccessToken;
     if (token.isEmpty) {
-      throw TwilioAuthException(
-          'No access token available. Call initialize() first or pass accessToken to startCall().');
+      throw const TwilioAuthException(
+          'No access token available. Call initialize() first or pass accessToken to startCall().',);
     }
     // Clear any stale call state from the previous call so the new screen
     // doesn't incorrectly replay an old "connected" state.
@@ -205,21 +205,21 @@ class TwilioVoice {
   VoiceCallEvent? _mapEvent(VoiceEvent event) {
     return switch (event) {
       CallConnectingEvent e => CallStateChangedEvent(
-          callSid: e.callSid, state: CallState.connecting),
+          callSid: e.callSid, state: CallState.connecting,),
       CallRingingEvent e => CallStateChangedEvent(
-          callSid: e.callSid, state: CallState.ringing),
+          callSid: e.callSid, state: CallState.ringing,),
       CallConnectedEvent e => CallStateChangedEvent(
-          callSid: e.callSid, state: CallState.connected),
+          callSid: e.callSid, state: CallState.connected,),
       CallDisconnectedEvent e => CallStateChangedEvent(
-          callSid: e.callSid, state: CallState.disconnected),
+          callSid: e.callSid, state: CallState.disconnected,),
       CallFailedEvent e => VoiceErrorEvent(
-          message: e.message, code: e.code),
+          message: e.message, code: e.code,),
       CallIncomingEvent e =>
         IncomingCallEvent(callSid: e.callSid, from: e.from, to: e.to),
       CallReconnectingEvent e => CallStateChangedEvent(
-          callSid: e.callSid, state: CallState.reconnecting),
+          callSid: e.callSid, state: CallState.reconnecting,),
       CallReconnectedEvent e => CallStateChangedEvent(
-          callSid: e.callSid, state: CallState.connected),
+          callSid: e.callSid, state: CallState.connected,),
       CallMutedEvent e =>
         CallMutedChangedEvent(callSid: e.callSid, isMuted: e.isMuted),
       CallHeldEvent e =>

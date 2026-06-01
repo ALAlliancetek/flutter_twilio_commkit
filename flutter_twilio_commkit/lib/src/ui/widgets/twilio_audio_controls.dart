@@ -30,9 +30,9 @@ class TwilioAudioControls extends StatelessWidget {
           onSelected: (_) => onRouteSelected(route),
           avatar: Icon(_icon(route),
               size: 16,
-              color: isSelected ? Colors.white : theme.controlIconColor),
+              color: isSelected ? Colors.white : theme.controlIconColor,),
           labelStyle: TextStyle(
-              color: isSelected ? Colors.white : theme.participantNameColor),
+              color: isSelected ? Colors.white : theme.participantNameColor,),
         );
       }).toList(),
     );

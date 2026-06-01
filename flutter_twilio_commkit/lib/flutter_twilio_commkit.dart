@@ -18,7 +18,7 @@
 ///   ),
 /// );
 /// ```
-library flutter_twilio_commkit;
+library;
 
 // Core
 export 'src/core/twilio_commkit.dart';

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../core/twilio_commkit.dart';
@@ -166,7 +168,7 @@ class _TwilioCallHandlerState extends State<TwilioCallHandler> {
     // callConnected event arrives after the screen is listening for it.
     // If we accept first, callConnected fires before the screen subscribes
     // and the status stays stuck at "Connecting…".
-    Navigator.push(
+    unawaited(Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => TwilioVoiceCallScreen(
@@ -176,7 +178,7 @@ class _TwilioCallHandlerState extends State<TwilioCallHandler> {
           onCallEnded: () => Navigator.pop(context),
         ),
       ),
-    );
+    ),);
 
     // Accept slightly after navigation so the screen's stream subscription
     // is registered before callConnected fires.

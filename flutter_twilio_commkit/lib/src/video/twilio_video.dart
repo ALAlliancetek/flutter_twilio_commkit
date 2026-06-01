@@ -97,7 +97,7 @@ class TwilioVideo {
         // the platform will return the room state on connect. We guard after
         // connect inside the returned room model instead.
         TwilioLogger.debug(
-            'maxParticipants=$_maxParticipants — will enforce after connect');
+            'maxParticipants=$_maxParticipants — will enforce after connect',);
       } catch (_) {}
     }
 
@@ -118,7 +118,7 @@ class TwilioVideo {
           final total = existing.length + 1;
           if (total > _maxParticipants!) {
             TwilioLogger.warning(
-                'Room full: $total participants > cap $_maxParticipants — disconnecting');
+                'Room full: $total participants > cap $_maxParticipants — disconnecting',);
             await TwilioCommKitPlatform.instance
                 .disconnectFromRoom(roomSid: model.sid);
             _currentRoom = null;
@@ -167,7 +167,7 @@ class TwilioVideo {
     final room = _currentRoom;
     _currentRoom = null;
     // Cancel platform subscription so next joinRoom gets a fresh one.
-    _platformSubscription?.cancel();
+    unawaited(_platformSubscription?.cancel());
     _platformSubscription = null;
     if (room == null) {
       // No tracked room, but tell the native side to disconnect anyway
@@ -219,7 +219,7 @@ class TwilioVideo {
               isAudioEnabled: m.isAudioEnabled,
               networkQualityLevel: m.networkQualityLevel,
               isDominantSpeaker: m.isDominantSpeaker,
-            ))
+            ),)
         .toList();
   }
 
@@ -238,7 +238,7 @@ class TwilioVideo {
   VideoRoomEvent? _mapEvent(VideoEvent event) {
     return switch (event) {
       RoomConnectedEvent e => RoomConnectedRoomEvent(
-          roomSid: e.roomSid, roomName: e.roomName),
+          roomSid: e.roomSid, roomName: e.roomName,),
       RoomDisconnectedEvent e =>
         RoomDisconnectedRoomEvent(roomSid: e.roomSid, reason: e.reason),
       RoomReconnectingEvent e =>
