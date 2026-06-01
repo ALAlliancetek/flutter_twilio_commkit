@@ -1,0 +1,4 @@
+# Dart tool generated files – not needed in the published package
+.dart_tool/
+pubspec.lock
+

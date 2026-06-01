@@ -153,12 +153,13 @@ class MethodChannelTwilioCommKit extends TwilioCommKitPlatform {
 
   @override
   Future<List<ParticipantModel>> getParticipants(
-      {required String roomSid}) async {
+      {required String roomSid,}) async {
     final result = await _methodChannel
         .invokeListMethod<Map>('getParticipants', {'roomSid': roomSid});
     return result
-            ?.map((e) =>
-                ParticipantModel.fromMap(Map<String, dynamic>.from(e)))
+            ?.map(
+              (e) => ParticipantModel.fromMap(Map<String, dynamic>.from(e)),
+            )
             .toList() ??
         [];
   }

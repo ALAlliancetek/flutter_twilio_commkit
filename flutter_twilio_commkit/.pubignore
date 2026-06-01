@@ -1,5 +1,9 @@
 # Exclude files that should not be uploaded to pub.dev
 
+# Dart tool generated files
+.dart_tool/
+pubspec.lock
+
 # Example apps (too large)
 example/
 

@@ -24,7 +24,8 @@ sealed class VideoEvent {
         ),
       'participantConnected' => ParticipantConnectedEvent(
           participant: ParticipantModel.fromMap(
-              Map<String, dynamic>.from(map['participant'])),
+            Map<String, dynamic>.from(map['participant']),
+          ),
         ),
       'participantDisconnected' => ParticipantDisconnectedEvent(
           participantSid: map['participantSid'] as String,
@@ -42,7 +43,8 @@ sealed class VideoEvent {
         ),
       'networkQualityChanged' => NetworkQualityChangedEvent(
           quality: NetworkQualityModel.fromMap(
-              Map<String, dynamic>.from(map['quality'])),
+            Map<String, dynamic>.from(map['quality']),
+          ),
         ),
       'error' => VideoErrorEvent(
           message: map['message'] as String,

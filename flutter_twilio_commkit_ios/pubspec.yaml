@@ -28,4 +28,5 @@ flutter:
     platforms:
       ios:
         pluginClass: FlutterTwilioCommKitIosPlugin
+        sharedDarwinSource: false
 
