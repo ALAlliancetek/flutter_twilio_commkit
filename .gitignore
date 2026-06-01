@@ -52,3 +52,5 @@ flutter_twilio_commkit/pubspec.lock
 flutter_twilio_commkit_platform_interface/pubspec.lock
 flutter_twilio_commkit_android/pubspec.lock
 flutter_twilio_commkit_ios/pubspec.lock
+# GitHub Actions workflows
+.github/workflows/
