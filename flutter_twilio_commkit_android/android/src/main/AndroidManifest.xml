@@ -1,0 +1,57 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Required for fullScreenIntent on Android 10+ (must also be in host app manifest) -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!-- Bluetooth audio routing (headset support) -->
+    <!-- BLUETOOTH + BLUETOOTH_ADMIN are normal/install-time permissions on Android < 12 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- BLUETOOTH_CONNECT is required on Android 12+ (API 31+) to enumerate
+         and connect to paired Bluetooth devices for audio routing -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <!-- BLUETOOTH_SCAN needed by AudioSwitch on Android 12+ -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+
+    <application>
+        <!-- Foreground service for active voice calls -->
+        <service
+            android:name=".voice.TwilioCallForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="microphone|camera" />
+
+        <!--
+            FCM service bundled in the SDK.
+            Host apps declare this in their manifest — no Kotlin code needed:
+
+            <service
+                android:name="com.twiliocommkit.android.voice.TwilioFcmService"
+                android:exported="false">
+                <intent-filter>
+                    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                </intent-filter>
+            </service>
+        -->
+
+        <!--
+            Full-screen incoming call Activity.
+            Host apps declare this in their manifest:
+
+            <activity
+                android:name="com.twiliocommkit.android.voice.TwilioIncomingCallActivity"
+                android:exported="false"
+                android:launchMode="singleInstance"
+                android:taskAffinity="${applicationId}.call"
+                android:showWhenLocked="true"
+                android:turnScreenOn="true"
+                android:showOnLockScreen="true"
+                android:excludeFromRecents="true"/>
+
+            Also add to host app manifest permissions:
+                <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+                <uses-permission android:name="android.permission.WAKE_LOCK"/>
+        -->
+    </application>
+</manifest>
+

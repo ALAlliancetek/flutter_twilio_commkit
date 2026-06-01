@@ -1,0 +1,21 @@
+# Exclude files that should not be uploaded to pub.dev
+
+# Example apps (too large)
+example/
+
+# CI / editor config
+.github/
+.vscode/
+.idea/
+
+# Build outputs
+build/
+*.iml
+
+# Coverage
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
+

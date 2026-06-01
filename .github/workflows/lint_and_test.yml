@@ -1,0 +1,48 @@
+name: Lint & Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-test:
+    name: Dart Lint & Flutter Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package:
+          - flutter_twilio_commkit_platform_interface
+          - flutter_twilio_commkit
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.x'
+          channel: stable
+          cache: true
+
+      - name: Install dependencies — ${{ matrix.package }}
+        working-directory: ${{ matrix.package }}
+        run: flutter pub get
+
+      - name: Analyze — ${{ matrix.package }}
+        working-directory: ${{ matrix.package }}
+        run: flutter analyze --fatal-infos
+
+      - name: Test — ${{ matrix.package }}
+        working-directory: ${{ matrix.package }}
+        run: flutter test --coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: ${{ matrix.package }}/coverage/lcov.info
+          flags: ${{ matrix.package }}
+        if: success()
+

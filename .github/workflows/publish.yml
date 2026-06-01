@@ -1,0 +1,39 @@
+name: Publish to pub.dev
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    name: Publish packages
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.x'
+          channel: stable
+
+      - name: Publish platform_interface
+        working-directory: flutter_twilio_commkit_platform_interface
+        run: flutter pub publish --force
+
+      - name: Publish android
+        working-directory: flutter_twilio_commkit_android
+        run: flutter pub publish --force
+
+      - name: Publish ios
+        working-directory: flutter_twilio_commkit_ios
+        run: flutter pub publish --force
+
+      - name: Publish main package
+        working-directory: flutter_twilio_commkit
+        run: flutter pub publish --force
+

@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    namespace 'com.twiliocommkit.android'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 26
+        targetSdk 34
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.23"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
+
+    // Twilio Video SDK
+    implementation 'com.twilio:video-android:7.7.0'
+
+    // Twilio Voice SDK
+    implementation 'com.twilio:voice-android:6.5.0'
+
+    // AudioSwitch — required by Twilio Video SDK for proper audio routing
+    implementation 'com.twilio:audioswitch:1.1.5'
+
+    // AndroidX
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-service:2.7.0'
+
+    // Firebase Messaging — required for TwilioFcmService bundled in the SDK
+    // The host app must apply the google-services plugin and add google-services.json
+    compileOnly 'com.google.firebase:firebase-messaging-ktx:24.1.0'
+}
+

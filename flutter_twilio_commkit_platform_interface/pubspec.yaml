@@ -1,0 +1,30 @@
+name: flutter_twilio_commkit_platform_interface
+description: >-
+  Platform interface for flutter_twilio_commkit. Defines the abstract contract
+  implemented by the Android and iOS platform packages.
+version: 0.1.0
+repository: https://github.com/your-org/flutter_twilio_commkit
+homepage: https://github.com/your-org/flutter_twilio_commkit
+issue_tracker: https://github.com/your-org/flutter_twilio_commkit/issues
+
+topics:
+  - twilio
+  - voice
+  - video
+  - voip
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  mockito: ^5.4.4
+
