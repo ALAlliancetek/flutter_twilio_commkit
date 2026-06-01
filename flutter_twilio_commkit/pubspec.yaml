@@ -11,10 +11,7 @@ topics:
   - twilio
   - voice
   - video
-  - calling
   - voip
-  - webrtc
-  - callkit
   - communication
 
 environment:
