@@ -1,0 +1,54 @@
+#!/bin/bash
+# ─────────────────────────────────────────────────────────────────────────────
+# pre-push hook — final scan before code reaches GitHub
+# Catches anything that slipped past pre-commit.
+# ─────────────────────────────────────────────────────────────────────────────
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+echo ""
+echo "🛡️  Running pre-push security scan..."
+ERRORS=0
+REMOTE=$1
+REMOTE_URL=$2
+# Scan all files being pushed for credential patterns
+FORBIDDEN=(
+  "TWILIO_API_KEY_SECRET=[A-Za-z0-9]"
+  "apiKeySid = .SK[a-f0-9]"
+  "accountSid = .AC[a-f0-9]"
+  "pushCredentialSid = .CR[a-f0-9]"
+  "outgoingApplicationSid = .AP[a-f0-9]"
+  "TWILIO_ACCOUNT_SID=AC[a-f0-9]"
+  "TWILIO_API_KEY_SID=SK[a-f0-9]"
+)
+while read LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
+  if [ "$LOCAL_SHA" = "0000000000000000000000000000000000000000" ]; then
+    continue  # Skip deleted branches
+  fi
+  # Get range of commits being pushed
+  if [ "$REMOTE_SHA" = "0000000000000000000000000000000000000000" ]; then
+    RANGE="$LOCAL_SHA"
+  else
+    RANGE="$REMOTE_SHA..$LOCAL_SHA"
+  fi
+  for PATTERN in "${FORBIDDEN[@]}"; do
+    MATCHES=$(git log -p "$RANGE" 2>/dev/null | grep "^+" | grep -v "^+++" | grep -E "$PATTERN" 2>/dev/null)
+    if [ -n "$MATCHES" ]; then
+      echo -e "${RED}❌ BLOCKED: Credential pattern in push to $REMOTE:${NC}"
+      echo -e "${RED}   Pattern: $PATTERN${NC}"
+      echo "$MATCHES" | head -3
+      echo ""
+      ERRORS=$((ERRORS + 1))
+    fi
+  done
+done
+if [ "$ERRORS" -gt 0 ]; then
+  echo -e "${RED}Push BLOCKED — remove credentials before pushing.${NC}"
+  echo -e "${RED}To bypass (emergency only): git push --no-verify${NC}"
+  echo ""
+  exit 1
+else
+  echo -e "${GREEN}✅ Pre-push scan passed.${NC}"
+  echo ""
+  exit 0
+fi

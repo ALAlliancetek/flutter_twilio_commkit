@@ -1,17 +1,15 @@
-# ── Twilio credentials (NEVER commit real keys) ───────────────────────────────
-# Real config files are ignored — only the .example templates are committed.
+# ── Twilio credentials (NEVER commit real keys) ─────────────────────────────
+# Real config files are gitignored. Only the .example templates are committed.
+# Copy twilio_app_config.dart.example -> twilio_app_config.dart to use locally.
 example/*/lib/config/twilio_app_config.dart
-
 # Firebase config files (contain project identifiers)
 **/google-services.json
 **/GoogleService-Info.plist
 **/firebase_options.dart
-
 # Token server environment (contains Twilio API secrets)
 docs/token_server/.env
 docs/token_server/.env.local
-
-# ── Flutter / Dart ────────────────────────────────────────────────────────────
+# ── Flutter / Dart ──────────────────────────────────────────────────────────
 **/doc/api/
 **/.dart_tool/
 **/.flutter-plugins
@@ -20,8 +18,7 @@ docs/token_server/.env.local
 **/.pub/
 **/build/
 **/coverage/
-
-# ── Android ───────────────────────────────────────────────────────────────────
+# ── Android ─────────────────────────────────────────────────────────────────
 **/android/local.properties
 **/android/.gradle/
 **/android/captures/
@@ -34,30 +31,24 @@ docs/token_server/.env.local
 **/android/app/debug
 **/android/app/profile
 **/android/app/release
-
-# ── iOS ───────────────────────────────────────────────────────────────────────
+# ── iOS ──────────────────────────────────────────────────────────────────────
 **/ios/Pods/
 **/ios/.symlinks/
 **/ios/Flutter/.last_build_id
-
-# ── macOS ─────────────────────────────────────────────────────────────────────
+# ── macOS ────────────────────────────────────────────────────────────────────
 **/macos/Pods/
 **/macos/.symlinks/
-
 # ── IntelliJ / Android Studio ────────────────────────────────────────────────
 **/.idea/
 **/*.iml
 **/*.ipr
 **/*.iws
-
-# ── VS Code ───────────────────────────────────────────────────────────────────
-# .vscode/ is intentionally NOT ignored — launch configs are useful to share
-
-# ── OS ────────────────────────────────────────────────────────────────────────
+# ── OS ───────────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
-
-# ── Pub publish lock ──────────────────────────────────────────────────────────
-**/pubspec.lock
-
-docs
+# ── Pub lock (not needed for packages) ─────────────────────────────────────
+# pubspec.lock is intentionally NOT ignored for app projects, only for packages
+flutter_twilio_commkit/pubspec.lock
+flutter_twilio_commkit_platform_interface/pubspec.lock
+flutter_twilio_commkit_android/pubspec.lock
+flutter_twilio_commkit_ios/pubspec.lock
